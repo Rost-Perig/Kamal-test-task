@@ -5,13 +5,21 @@ export interface ICategoriesState {
   // currentPage: string
   isCategoryCreating: boolean
   categories: {
+    isEditing?: boolean,
     categoryName: string,
-    categoryId: string
+    categoryId: string,
+    subCategories?: {
+      subCategoryName: string,
+      subCategoryId: string,
+      subSubCategories?: {
+        subSubCategoryName: string,
+        subSubCategoryId: string,
+      }[]
+    }[]
   }[]
 }
 
 const initialState: ICategoriesState = {
-  // currentPage: '',
   isCategoryCreating: false,
   categories: []
 }
@@ -20,22 +28,27 @@ export const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-    // setCurrentPage: (state, action: PayloadAction<string>) => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.currentPage = action.payload
-    // },
     changeIsCategoryCreating: (state, action: PayloadAction<boolean>) => {
       state.isCategoryCreating = action.payload
     },
-    addCategory: (state, action: PayloadAction<{categoryName: string, categoryId: string}>) => {
+    addCategory: (state, action: PayloadAction<{categoryName: string, categoryId: string, isEditing: boolean}>) => {
       state.categories.push(action.payload)
-    }
+    },
+    delCategory: (state, action: PayloadAction<string>) => {
+      state.categories.splice(state.categories.findIndex(el => el.categoryId === action.payload), 1)
+    },
+     changeIsEditingCategory: (state, action: PayloadAction<{blockId: string, editing: boolean}>) => {
+       const editingCategory = state.categories.find(el => action.payload.blockId === el.categoryId)
+      if (editingCategory) editingCategory.isEditing = action.payload.editing
+    },
+      editCategoryName: (state, action: PayloadAction<{blockId: string, newName: string}>) => {
+       const editingCategory = state.categories.find(el => action.payload.blockId === el.categoryId)
+      if (editingCategory) editingCategory.categoryName = action.payload.newName
+    },
+
   }
 })
 
-export const {changeIsCategoryCreating, addCategory } = categoriesSlice.actions
+export const {changeIsCategoryCreating, addCategory, delCategory, changeIsEditingCategory, editCategoryName } = categoriesSlice.actions
 
 export default categoriesSlice.reducer

@@ -8,6 +8,13 @@ export const CategoriesWrapper = styled.div`
   min-width: 100vw;
   padding: 48px 24px;
 `
+
+export const BlockWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 8px; 
+  border: 1px solid rgb(199, 208, 216);
+`
   
 export const StyledCategories = styled.div`
   display: flex;
@@ -25,7 +32,6 @@ export const StyledCategories = styled.div`
 export const StyledIcon = styled(Icon)`
   width: 24px;
   height: 24px;
-  margin-top: 6px;
   margin-left: 4px;
   color: rgb(199, 208, 216);
   cursor: pointer;
@@ -37,7 +43,6 @@ export const SubIcon = styled.div`
   justify-content: center;
   width: 20px;
   height: 20px;
-   margin-top: 8px;
   margin-left: 4px;
   background: rgb(199, 208, 216);
   border-radius: 50%;
@@ -56,12 +61,13 @@ export const StyledCategoryDiv = styled.div`
   padding: 8px;
   overflow: hidden;
   white-space: nowrap;
+  font-weight: 600;
+  color: rgb(245, 247, 251);
 `
 
 export const ListItemWrapper = styled.li`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 `
 

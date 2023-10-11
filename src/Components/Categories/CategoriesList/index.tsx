@@ -12,7 +12,7 @@ export const CategoriesList = () => {
     return (
         <StyledList>
             {!!categories.length && categories.map(el => (
-                <CategoryBlock key={el.categoryId} name={el.categoryName} />
+                <CategoryBlock key={el.categoryId} name={el.categoryName} blockId={el.categoryId} editing={el.isEditing} />
             ))}
             {!!isCategoryCreating && <Creator inputName="categoryInput" placeholder="enter category name" categoryCreating={true}/> }    
         </StyledList>
