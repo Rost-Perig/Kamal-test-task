@@ -16,7 +16,6 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
     <StyledLayout>
       <Header />
       <main>{children}</main>
-      {/* <Footer /> */}
     </StyledLayout>
   )
 }

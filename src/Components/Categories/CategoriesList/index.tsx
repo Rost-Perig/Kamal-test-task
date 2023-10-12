@@ -1,8 +1,8 @@
-import { CategoryBlock } from "../CategoryBlock"
-import { StyledList } from "../styles"
-import { Creator } from "../Creator"
 import { useTypedSelector } from "hooks/hooks"
 import { RootState } from "store/store"
+import { CategoryBlock } from "../CategoryBlock"
+import { Creator } from "../Creator"
+import { ListItemWrapper, StyledList, VerticalLine } from "../styles"
 
 export const CategoriesList = () => {
 
@@ -14,7 +14,11 @@ export const CategoriesList = () => {
             {!!categories.length && categories.map(el => (
                 <CategoryBlock key={el.categoryId} name={el.categoryName} blockId={el.categoryId} editing={el.isEditing} />
             ))}
-            {!!isCategoryCreating && <Creator inputName="categoryInput" placeholder="enter category name" categoryCreating={true}/> }    
+            {!!isCategoryCreating &&
+                <ListItemWrapper>
+                    <VerticalLine />
+                    <Creator inputName="categoryInput" placeholder="enter category name" categoryCreating={true} />
+                </ListItemWrapper>}    
         </StyledList>
     )
 }

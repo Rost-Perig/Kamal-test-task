@@ -4,7 +4,7 @@ import { HomeWrapper } from "./styles"
 export const Home = () => { 
     return (
         <HomeWrapper>
-            <Categories></Categories>
+            <Categories/>
         </HomeWrapper>
     )
 }

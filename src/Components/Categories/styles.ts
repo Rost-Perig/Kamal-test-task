@@ -38,7 +38,7 @@ export const StyledIcon = styled(Icon)`
 `
 
 export const SubIcon = styled.div`
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 20px;
@@ -49,10 +49,12 @@ export const SubIcon = styled.div`
   cursor: pointer;
 `
 
-export const StyledList = styled.li`
+export const StyledList = styled.ul`
   display: flex;
   justify-content: space-around;
   width: 100%;
+  margin: 0;
+  padding: 0;
 `
 
 export const StyledCategoryDiv = styled.div`
@@ -74,6 +76,11 @@ export const ListItemWrapper = styled.li`
 export const VerticalLine = styled.div`
   height: 16px;
   border-left: 1px solid rgb(199, 208, 216);
+`
+
+export const HorizontalLine = styled.div`
+  width: 100%;
+  border-top: 1px solid rgb(199, 208, 216);
 `
 
 

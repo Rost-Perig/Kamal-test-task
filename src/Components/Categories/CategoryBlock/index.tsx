@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react"
-import { BlockWrapper, ListItemWrapper, StyledCategoryDiv, StyledIcon, SubIcon, VerticalLine } from "../styles"
 import { useTypedDispatch } from "hooks/hooks"
 import { changeIsEditingCategory, delCategory } from "store/reducers/categories/categoriesSlice"
 import { Creator } from "../Creator"
+import { BlockWrapper, ListItemWrapper, StyledCategoryDiv, StyledIcon, SubIcon, VerticalLine } from "../styles"
 
 export const CategoryBlock = ({ name, blockId, editing }: { name: string, blockId: string, editing?: boolean }) => {
      const dispatch = useTypedDispatch()

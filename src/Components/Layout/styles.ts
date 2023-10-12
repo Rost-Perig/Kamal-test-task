@@ -7,7 +7,6 @@ export const StyledLayout = styled.div`
   background: rgb(245, 247, 251);
   min-width: 100vw;
   min-height: 100vh;
-
 `;
 
 
