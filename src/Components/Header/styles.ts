@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,7 +8,6 @@ export const StyledHeader = styled.header`
   height: 82px;
   padding: 0 24px;
   border-bottom: 1px solid rgb(199, 208, 216);
-  /* z-index: 10; */
 `
 
 export const StyledLogo = styled.p`
@@ -44,4 +40,10 @@ export const StyledHeaderButton = styled.button`
   font-weight: 600;
   color: rgb(196, 196, 196);
   cursor: pointer;
+`
+
+export const StyledSelect = styled.select`
+  color: rgb(196, 196, 196);
+  margin: 0 4px;
+  border: none;
 `

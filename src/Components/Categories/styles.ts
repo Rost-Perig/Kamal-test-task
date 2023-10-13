@@ -5,19 +5,20 @@ export const CategoriesWrapper = styled.div`
   position: relative;
   top: 0;
   left: 0;
-
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-width: 100vw;
-  padding: 48px 24px;
+  /* min-width: 600px; */
+  padding: 48px 0px;
+  margin: 0 24px;
+  overflow: hidden;
 `
 
 export const BlockWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 8px;
-  margin: 0 4px;
+  /* margin: 0 4px; */
   border: 1px solid rgb(199, 208, 216);
 `
 
@@ -55,8 +56,12 @@ export const SubIcon = styled.div`
 `
 
 export const StyledList = styled.ul`
+  position: relative;
+  top: -1px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0 24px;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -73,17 +78,32 @@ export const StyledCategoryDiv = styled.div`
 `
 
 export const ListItemWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `
 
 export const VerticalLine = styled.div`
+  position: relative;
   height: 16px;
   border-left: 1px solid rgb(199, 208, 216);
 `
 
 export const HorizontalLine = styled.div`
+  position: relative;
+  /* top: 1; */
   width: 100%;
   border-top: 1px solid rgb(199, 208, 216);
+`
+
+export const LinePatch = styled.div`
+  position: absolute;
+  top: -3px;
+  width: 800px;
+  height: 6px;
+  background: rgb(245, 247, 251);
+  /* background: red; */
+  z-index: 10;
 `

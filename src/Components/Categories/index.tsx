@@ -43,6 +43,7 @@ export const Categories = () => {
 
   const isCategoryCreating = useTypedSelector((state: RootState) => state.categories?.isCategoryCreating)
   const categories = useTypedSelector((state: RootState) => state.categories?.categories)
+  const scale = useTypedSelector((state: RootState) => state.scale.scale)
 
   return (
     <CategoriesWrapper
@@ -50,6 +51,7 @@ export const Categories = () => {
         left: position.x + 'px',
         top: position.y + 'px',
         // cursor: isDragging ? "grabbing" : "grab"
+        transform: `scale(${scale})`,
       }}
       // onMouseDown={handleMouseDown}
       // onMouseUp={handleMouseUp}

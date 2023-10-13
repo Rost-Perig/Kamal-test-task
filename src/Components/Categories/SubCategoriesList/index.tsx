@@ -1,7 +1,7 @@
 import { useTypedSelector } from 'hooks/hooks'
 import { RootState } from 'store/store'
 import { Creator } from '../Creator'
-import { ListItemWrapper, StyledList, VerticalLine } from '../styles'
+import { LinePatch, ListItemWrapper, StyledList, VerticalLine } from '../styles'
 import { SubCategoryBlock } from '../SubCategoryBlock '
 
 export const SubCategoriesList = ({
@@ -18,18 +18,22 @@ export const SubCategoriesList = ({
   return (
     <StyledList>
       {!!subCategory?.length &&
-        subCategory.map((el) => (
+        subCategory.map((el, index) => (
           <SubCategoryBlock
             key={el.subCategoryId}
             name={el.subCategoryName}
             categoryId={el.categoryId}
             isSubEditing={el.isSubEditing}
             subCategoryId={el.subCategoryId}
+            firstPosition={index === 0 ? true : false}
+            lastPosition={index === subCategory.length - 1 && !createSub ? true : false}
           />
         ))}
       {createSub && (
         <ListItemWrapper>
-          <VerticalLine />
+          <VerticalLine style={{ position: 'relative' }}>
+            <LinePatch />
+          </VerticalLine>
           <Creator
             inputName="subCategoryInput"
             placeholder="enter sub-category name"

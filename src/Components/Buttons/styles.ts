@@ -8,6 +8,7 @@ export const StyledBtnY = styled.button`
   background: rgba(198, 208, 216, 0.6);
   border: none;
   cursor: pointer;
+  z-index: 10;
 `
 
 export const StyledBtnX = styled.button`
@@ -18,4 +19,5 @@ export const StyledBtnX = styled.button`
   background: rgba(198, 208, 216, 0.6);
   border: none;
   cursor: pointer;
+  z-index: 10;
 `

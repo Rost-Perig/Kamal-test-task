@@ -7,5 +7,5 @@ export const HomeWrapper = styled.div`
   flex-direction: column;
   width: 100vw;
   height: calc(100vw - 82px);
-  overflow-x: scroll;
+  overflow: hidden;
 `
