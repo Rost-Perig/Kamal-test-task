@@ -2,15 +2,20 @@ import { useEffect, useState } from "react"
 import { useTypedDispatch } from "hooks/hooks"
 import { addCategory, changeIsCategoryCreating, changeIsEditingCategory, editCategoryName } from "store/reducers/categories/categoriesSlice"
 import { BlockWrapper, StyledIcon } from "../styles"
+import { addSubCategory, changeIsEditingSubCategory, editSubCategoryName } from "store/reducers/sub-categories/subCategoriesSlice"
 const { v4: uuidv4 } = require('uuid')
 
-export const Creator = ({ inputName, placeholder, categoryCreating, oldName, editing, blockId }: {
+export const Creator = ({ inputName, placeholder, categoryCreating, oldName, editing, categoryId, subCategoryCreating, isSubEditing, subCategoryId, onSubCreatingClick }: {
     inputName?: string,
     placeholder?: string,
     categoryCreating?: boolean,
     editing?: boolean,
-    blockId?: string,
-    oldName?: string
+    categoryId?: string,
+    oldName?: string,
+    subCategoryCreating?: boolean
+    isSubEditing?: boolean,
+    subCategoryId?: string,
+    onSubCreatingClick?: ()=>void
 }) => {
     const dispatch = useTypedDispatch()
     
@@ -21,7 +26,9 @@ export const Creator = ({ inputName, placeholder, categoryCreating, oldName, edi
     },[oldName])
 
     return (
-        <BlockWrapper>
+        <div className="not-draggable">
+
+        <BlockWrapper >
             <input
                 name={inputName}
                 value={name}
@@ -36,20 +43,42 @@ export const Creator = ({ inputName, placeholder, categoryCreating, oldName, edi
                 style={{ color: 'rgb(233, 202, 78)' }}
                 onClick={() => {
                     categoryCreating && dispatch(changeIsCategoryCreating(false))
-                    editing && blockId && dispatch(changeIsEditingCategory({ blockId: blockId, editing: false }))
+                    editing && categoryId && dispatch(changeIsEditingCategory({ categoryId: categoryId, editing: false }))
+                    isSubEditing && subCategoryId && dispatch(changeIsEditingSubCategory({ subCategoryId: subCategoryId, editing: false }))
+
+                    onSubCreatingClick && onSubCreatingClick()
+
                     setName('')
                 }}
             />
             <StyledIcon
                 icon="ic:baseline-check-circle" style={{ color: 'green' }}
-                onClick={() => {
-                    categoryCreating && name && dispatch(addCategory({ categoryName: name, categoryId: uuidv4(), isEditing: false }))
-                    categoryCreating && dispatch(changeIsCategoryCreating(false))
-                    editing && blockId && name &&  dispatch(editCategoryName({ blockId: blockId, newName: name }))
-                    editing && blockId && dispatch(changeIsEditingCategory({ blockId: blockId, editing: false }))
+                    onClick={() => {
+                        if (categoryCreating) {
+                            name && dispatch(addCategory({ categoryName: name, categoryId: uuidv4(), isEditing: false }))
+                            dispatch(changeIsCategoryCreating(false))        
+                        }
+                        if (editing && categoryId) {
+                            name &&  dispatch(editCategoryName({ categoryId: categoryId, newName: name }))
+                            dispatch(changeIsEditingCategory({ categoryId: categoryId, editing: false })) 
+                        }
+                        if (subCategoryCreating && categoryId && name) {
+                            dispatch(addSubCategory({ subCategoryName: name, subCategoryId: uuidv4(), categoryId: categoryId, isSubEditing: false}))
+                        }
+                    // categoryCreating && name && dispatch(addCategory({ categoryName: name, categoryId: uuidv4(), isEditing: false}))
+                    // categoryCreating && dispatch(changeIsCategoryCreating(false))
+                    // editing && categoryId && name &&  dispatch(editCategoryName({ categoryId: categoryId, newName: name }))
+                    // editing && categoryId && dispatch(changeIsEditingCategory({ categoryId: categoryId, editing: false }))
+
+                    // subCategoryCreating && categoryId && name && dispatch(addSubCategory({ subCategoryName: name, subCategoryId: uuidv4(), categoryId: categoryId, isSubEditing: false}))
+                    isSubEditing && subCategoryId && dispatch(editSubCategoryName({ subCategoryId: subCategoryId, newName: name }))
+                    isSubEditing && subCategoryId && dispatch(changeIsEditingSubCategory({ subCategoryId: subCategoryId, editing: false }))
+                    onSubCreatingClick && onSubCreatingClick()
                     setName('')
                 }}
             /> 
-        </BlockWrapper>  
+            </BlockWrapper>  
+        </div>
+            
     )
 }

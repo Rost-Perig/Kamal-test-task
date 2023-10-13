@@ -1,7 +1,11 @@
 import styled from 'styled-components'
-import { Icon } from '@iconify/react';
+import { Icon } from '@iconify/react'
 
 export const CategoriesWrapper = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,10 +16,11 @@ export const CategoriesWrapper = styled.div`
 export const BlockWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 8px; 
+  padding: 8px;
+  margin: 0 4px;
   border: 1px solid rgb(199, 208, 216);
 `
-  
+
 export const StyledCategories = styled.div`
   display: flex;
   align-items: center;
@@ -67,7 +72,7 @@ export const StyledCategoryDiv = styled.div`
   color: rgb(245, 247, 251);
 `
 
-export const ListItemWrapper = styled.li`
+export const ListItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,7 +87,3 @@ export const HorizontalLine = styled.div`
   width: 100%;
   border-top: 1px solid rgb(199, 208, 216);
 `
-
-
-
-

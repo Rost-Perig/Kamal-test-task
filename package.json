@@ -47,6 +47,11 @@
   },
   "devDependencies": {
     "@iconify/react": "^4.1.1",
-    "@types/uuid": "^9.0.5"
+    "@types/uuid": "^9.0.5",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
   }
 }

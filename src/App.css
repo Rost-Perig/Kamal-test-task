@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-* {box-sizing: border-box;}
+* {
+  box-sizing: border-box;
+}
 
 .App-logo {
   height: 40vmin;
@@ -38,3 +40,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+

@@ -1,19 +1,24 @@
 import styled from 'styled-components'
 
-export const StyledHeader = styled.div`
+export const StyledHeader = styled.header`
+  /* position: absolute;
+  top: 0;
+  left: 0; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 24px;
+  height: 82px;
+  padding: 0 24px;
   border-bottom: 1px solid rgb(199, 208, 216);
+  /* z-index: 10; */
 `
 
 export const StyledLogo = styled.p`
- margin: 0;
- font-size: 20px;
- font-weight: 600;
- margin-right: 8px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 8px;
 `
 
 export const ServicesCount = styled.div`
@@ -26,7 +31,6 @@ export const ServicesCount = styled.div`
   background: rgb(252, 185, 76);
   font-size: 12px;
   color: rgb(245, 247, 251);
-
 `
 
 export const StyledHeaderButton = styled.button`
@@ -41,4 +45,3 @@ export const StyledHeaderButton = styled.button`
   color: rgb(196, 196, 196);
   cursor: pointer;
 `
-
