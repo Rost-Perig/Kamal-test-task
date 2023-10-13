@@ -6,6 +6,7 @@ import { BlockWrapper, HorizontalLine, LinePatch, ListItemWrapper, StyledCategor
 import { SubCategoriesList } from '../SubCategoriesList'
 import { useState } from 'react'
 import { RootState } from 'store/store'
+import { delSubCategories } from 'store/reducers/sub-categories/subCategoriesSlice'
 
 export const CategoryBlock = ({
   name,
@@ -13,12 +14,14 @@ export const CategoryBlock = ({
   editing,
   firstPosition,
   lastPosition,
+  isPair,
 }: {
   name: string,
   categoryId: string,
   editing?: boolean,
   lastPosition?: boolean,
   firstPosition?: boolean,
+  isPair?: boolean,
 }) => {
   const dispatch = useTypedDispatch()
 
@@ -40,7 +43,14 @@ export const CategoryBlock = ({
           <SubIcon onClick={() => dispatch(changeIsEditingCategory({ categoryId, editing: true }))}>
             <Icon icon="ic:baseline-mode-edit" style={{ color: 'white' }} />
           </SubIcon>
-          <StyledIcon icon="ic:baseline-cancel" onClick={() => dispatch(delCategory(categoryId))} style={{ color: 'red' }} />
+          <StyledIcon
+            icon="ic:baseline-cancel"
+            onClick={() => {
+              dispatch(delSubCategories(categoryId))
+              dispatch(delCategory(categoryId))
+            }}
+            style={{ color: 'red' }}
+          />
         </BlockWrapper>
       ) : (
         <Creator oldName={name} categoryId={categoryId} editing={editing} />
@@ -48,7 +58,7 @@ export const CategoryBlock = ({
       {(isSubCreating || !!subCategory.length) && <VerticalLine />}
       {(subCategory.length > 1 || (!!subCategory.length && subCategory)) && <HorizontalLine />}
 
-      <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} />
+      <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} isPair={isPair} />
     </ListItemWrapper>
   )
 }

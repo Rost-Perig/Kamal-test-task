@@ -19,6 +19,7 @@ export const CategoriesList = () => {
             editing={el.isEditing}
             firstPosition={index === 0 ? true : false}
             lastPosition={index === categories.length - 1 && !isCategoryCreating ? true : false}
+            isPair={(index + 1) % 2 === 0 ? true : false}
           />
         ))}
       {!!isCategoryCreating && (

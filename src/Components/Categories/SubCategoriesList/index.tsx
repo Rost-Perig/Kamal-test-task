@@ -8,9 +8,11 @@ export const SubCategoriesList = ({
   categoryId,
   createSub,
   onSubCreatingClick,
+  isPair,
 }: {
   categoryId?: string,
   createSub?: boolean,
+  isPair?: boolean,
   onSubCreatingClick?: () => void,
 }) => {
   const subCategory = useTypedSelector((state: RootState) => state.subCategories.subCategories).filter((el) => el.categoryId === categoryId)

@@ -38,6 +38,11 @@ export const subCategoriesSlice = createSlice({
       )
     },
 
+    delSubCategories: (state, action: PayloadAction<string>) => {
+      const filteredArr = state.subCategories.filter((el) => el.categoryId !== action.payload)
+      state.subCategories = filteredArr
+    },
+
     changeIsEditingSubCategory: (state, action: PayloadAction<{ subCategoryId: string, editing: boolean }>) => {
       const editingSubCategory = state.subCategories.find((el) => action.payload.subCategoryId === el.subCategoryId)
       if (editingSubCategory) editingSubCategory.isSubEditing = action.payload.editing
@@ -50,6 +55,6 @@ export const subCategoriesSlice = createSlice({
   },
 })
 
-export const { addSubCategory, changeIsEditingSubCategory, editSubCategoryName, delSubCategory } = subCategoriesSlice.actions
+export const { addSubCategory, changeIsEditingSubCategory, editSubCategoryName, delSubCategory, delSubCategories } = subCategoriesSlice.actions
 
 export default subCategoriesSlice.reducer
