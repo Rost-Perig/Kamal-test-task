@@ -18,7 +18,7 @@ export const CategoriesWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 48px 80px 120px 80px;
+  padding: 48px 112px 120px 112px;
   overflow: hidden;
 `
 
@@ -26,7 +26,6 @@ export const BlockWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 8px;
-  /* margin: 0 4px; */
   border: 1px solid rgb(199, 208, 216);
 `
 

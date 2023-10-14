@@ -1,28 +1,12 @@
 import { useTypedSelector } from 'hooks/hooks'
 import { RootState } from 'store/store'
-import { CategoryBlock } from '../CategoryBlock'
-import { Creator } from '../Creator'
-import { HorizontalLine, LinePatch, ListItemWrapper, StyledList, StyledPairList, VerticalLine } from '../styles'
+import { StyledPairList } from '../styles'
 import { SubCategoryBlock } from '../SubCategoryBlock'
-import { useState } from 'react'
 
-export const PairList = ({
-  categoryId,
-  createSub,
-  onSubCreatingClick,
-  isPair,
-}: {
-  categoryId?: string,
-  createSub?: boolean,
-  isPair?: boolean,
-  onSubCreatingClick?: () => void,
-}) => {
-  const [pairItemCreate, setPairItemCreate] = useState(true)
+export const PairList = ({ categoryId, createSub }: { categoryId?: string, createSub?: boolean }) => {
   const subCategory = useTypedSelector((state: RootState) => state.subCategories.subCategories).filter((el) => el.categoryId === categoryId)
-
   return (
     <StyledPairList>
-      {subCategory.length >= 1 && <HorizontalLine style={{ position: 'absolute' }} />}
       {!!subCategory?.length &&
         subCategory.map((el, index) => (
           <SubCategoryBlock
@@ -33,22 +17,10 @@ export const PairList = ({
             subCategoryId={el.subCategoryId}
             firstPosition={index === 0 ? true : false}
             lastPosition={index === subCategory.length - 1 && !createSub ? true : false}
+            isService={el.isService}
+            isPair={el.isPair}
           />
         ))}
-      {pairItemCreate && (
-        <ListItemWrapper>
-          <VerticalLine style={{ position: 'relative' }}>
-            <LinePatch />
-          </VerticalLine>
-          <Creator
-            inputName="subCategoryInput"
-            placeholder="enter sub-category name"
-            subCategoryCreating={true}
-            categoryId={categoryId}
-            onSubCreatingClick={onSubCreatingClick}
-          />
-        </ListItemWrapper>
-      )}
     </StyledPairList>
   )
 }

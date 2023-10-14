@@ -7,18 +7,17 @@ interface ISubCategoriesState {
     subCategoryName: string,
     categoryId: string,
     subCategoryId: string,
+    isService: boolean,
+    isPair: boolean,
   }[];
-  pairItemCreate: boolean;
 }
 
 const initialState: ISubCategoriesState = {
   subCategories: [],
-  pairItemCreate: false,
-  // subCategories: []
 }
 
 export const subCategoriesSlice = createSlice({
-  name: 'categories',
+  name: 'subCategories',
   initialState,
   reducers: {
     addSubCategory: (
@@ -28,6 +27,8 @@ export const subCategoriesSlice = createSlice({
         subCategoryId: string,
         categoryId: string,
         isSubEditing: boolean,
+        isPair: boolean,
+        isService: boolean,
       }>
     ) => {
       state.subCategories.push(action.payload)
@@ -54,10 +55,6 @@ export const subCategoriesSlice = createSlice({
       const editingSubCategory = state.subCategories.find((el) => action.payload.subCategoryId === el.subCategoryId)
       if (editingSubCategory) editingSubCategory.subCategoryName = action.payload.newName
     },
-    // changeIsEditingSubCategory: (state, action: PayloadAction<{ subCategoryId: string, editing: boolean }>) => {
-    //   const editingSubCategory = state.subCategories.find((el) => action.payload.subCategoryId === el.subCategoryId)
-    //   if (editingSubCategory) editingSubCategory.isSubEditing = action.payload.editing
-    // },
   },
 })
 

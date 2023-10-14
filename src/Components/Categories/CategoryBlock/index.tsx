@@ -29,10 +29,14 @@ export const CategoryBlock = ({
 
   const [isSubCreating, setIsSubCreating] = useState(false)
   const [isChose, setIsChose] = useState(false)
+  const [pairItemCreate, setPairItemCreate] = useState(false)
+  const [serviceCreate, setServiceCreate] = useState(false)
 
   const offChose = () => setIsChose(false)
 
   const onSubCreatingClick = () => setIsSubCreating(false)
+  const onPairItemCreate = (value: boolean) => setPairItemCreate(value)
+  const onServiceCreate = (value: boolean) => setServiceCreate(value)
 
   const subCategory = useTypedSelector((state: RootState) => state.subCategories.subCategories).filter((el) => el.categoryId === categoryId)
 
@@ -54,6 +58,7 @@ export const CategoryBlock = ({
               onClick={() => {
                 !isPair && onCategoryCreate()
                 isPair && setIsChose(true)
+                // isPair && setPairItemCreate(true)
               }}
             />
             <SubIcon onClick={() => dispatch(changeIsEditingCategory({ categoryId, editing: true }))}>
@@ -75,10 +80,30 @@ export const CategoryBlock = ({
         {!isPair ? (
           <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} isPair={isPair} />
         ) : (
-          <PairList />
+          <PairList categoryId={categoryId} createSub={isSubCreating} />
         )}
       </ListItemWrapper>
-      {isPair && isChose && <ChoseBlock offChose={offChose} />}
+      {(pairItemCreate || serviceCreate) && isPair && (
+        <ListItemWrapper>
+          <VerticalLine style={{ position: 'relative' }}>
+            <LinePatch />
+          </VerticalLine>
+          <Creator
+            inputName="subCategoryInput"
+            placeholder="enter name"
+            subCategoryCreating={true}
+            categoryId={categoryId}
+            onSubCreatingClick={onSubCreatingClick}
+            isPair={isPair}
+            onPairItemCreate={onPairItemCreate}
+            onServiceCreate={onServiceCreate}
+            serviceCreate={serviceCreate}
+          />
+        </ListItemWrapper>
+      )}
+      {isPair && isChose && !subCategory.length && !pairItemCreate && (
+        <ChoseBlock offChose={offChose} onPairItemCreate={onPairItemCreate} onServiceCreate={onServiceCreate} />
+      )}
     </span>
   )
 }

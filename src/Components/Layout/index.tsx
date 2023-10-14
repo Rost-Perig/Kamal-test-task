@@ -1,5 +1,3 @@
-// import { Header } from '../Header'
-
 import { Header } from 'Components/Header'
 import { StyledLayout } from './styles'
 
