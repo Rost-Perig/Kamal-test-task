@@ -85,9 +85,9 @@ export const Categories = () => {
         // onMouseUp={handleMouseUp}
         // onMouseMove={handleMouseMove}
 
-        // onMouseDown={handleMouseDown}
-        // onMouseMove={handleMouseMove}
-        // onMouseUp={handleMouseUp}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
         style={{
           position: 'relative',
           left: offset.x,
