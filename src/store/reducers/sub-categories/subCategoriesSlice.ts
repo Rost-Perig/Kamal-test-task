@@ -8,10 +8,12 @@ interface ISubCategoriesState {
     categoryId: string,
     subCategoryId: string,
   }[];
+  pairItemCreate: boolean;
 }
 
 const initialState: ISubCategoriesState = {
   subCategories: [],
+  pairItemCreate: false,
   // subCategories: []
 }
 
@@ -52,6 +54,10 @@ export const subCategoriesSlice = createSlice({
       const editingSubCategory = state.subCategories.find((el) => action.payload.subCategoryId === el.subCategoryId)
       if (editingSubCategory) editingSubCategory.subCategoryName = action.payload.newName
     },
+    // changeIsEditingSubCategory: (state, action: PayloadAction<{ subCategoryId: string, editing: boolean }>) => {
+    //   const editingSubCategory = state.subCategories.find((el) => action.payload.subCategoryId === el.subCategoryId)
+    //   if (editingSubCategory) editingSubCategory.isSubEditing = action.payload.editing
+    // },
   },
 })
 

@@ -18,8 +18,7 @@ export const CategoriesWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 48px 24px;
-  /* margin: 0 24px; */
+  padding: 48px 80px 120px 80px;
   overflow: hidden;
 `
 
@@ -71,6 +70,18 @@ export const StyledList = styled.ul`
   justify-content: space-between;
   flex-wrap: nowrap;
   gap: 0 24px;
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
+`
+
+export const StyledPairList = styled.ul`
+  position: relative;
+  /* top: -1px; */
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  /* gap: 0 24px; */
   /* width: 100%; */
   margin: 0;
   padding: 0;

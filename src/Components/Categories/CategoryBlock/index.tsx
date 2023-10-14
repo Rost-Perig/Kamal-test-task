@@ -7,6 +7,8 @@ import { SubCategoriesList } from '../SubCategoriesList'
 import { useState } from 'react'
 import { RootState } from 'store/store'
 import { delSubCategories } from 'store/reducers/sub-categories/subCategoriesSlice'
+import { ChoseBlock } from '../ChoseBlock'
+import { PairList } from '../PairList'
 
 export const CategoryBlock = ({
   name,
@@ -26,38 +28,57 @@ export const CategoryBlock = ({
   const dispatch = useTypedDispatch()
 
   const [isSubCreating, setIsSubCreating] = useState(false)
+  const [isChose, setIsChose] = useState(false)
+
+  const offChose = () => setIsChose(false)
 
   const onSubCreatingClick = () => setIsSubCreating(false)
 
   const subCategory = useTypedSelector((state: RootState) => state.subCategories.subCategories).filter((el) => el.categoryId === categoryId)
 
-  return (
-    <ListItemWrapper>
-      {firstPosition && <LinePatch style={{ right: 'calc(50% + 1px)' }} />}
-      {lastPosition && <LinePatch style={{ left: 'calc(50% + 1px)' }} />}
-      <VerticalLine />
-      {!editing ? (
-        <BlockWrapper>
-          <StyledCategoryDiv style={{ background: 'rgb(250, 156, 124)' }}>{name}</StyledCategoryDiv>
-          <StyledIcon icon="ic:baseline-add-circle" onClick={() => setIsSubCreating(true)} />
-          <SubIcon onClick={() => dispatch(changeIsEditingCategory({ categoryId, editing: true }))}>
-            <Icon icon="ic:baseline-mode-edit" style={{ color: 'white' }} />
-          </SubIcon>
-          <StyledIcon
-            icon="ic:baseline-cancel"
-            onClick={() => {
-              dispatch(delSubCategories(categoryId))
-              dispatch(delCategory(categoryId))
-            }}
-            style={{ color: 'red' }}
-          />
-        </BlockWrapper>
-      ) : (
-        <Creator oldName={name} categoryId={categoryId} editing={editing} />
-      )}
-      {(isSubCreating || !!subCategory.length) && <VerticalLine />}
+  const onCategoryCreate = () => {
+    setIsSubCreating(true)
+  }
 
-      <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} isPair={isPair} />
-    </ListItemWrapper>
+  return (
+    <span style={{ position: 'relative' }}>
+      <ListItemWrapper>
+        {firstPosition && <LinePatch style={{ right: 'calc(50% + 1px)' }} />}
+        {lastPosition && <LinePatch style={{ left: 'calc(50% + 1px)' }} />}
+        <VerticalLine />
+        {!editing ? (
+          <BlockWrapper>
+            <StyledCategoryDiv style={{ background: 'rgb(250, 156, 124)' }}>{name}</StyledCategoryDiv>
+            <StyledIcon
+              icon="ic:baseline-add-circle"
+              onClick={() => {
+                !isPair && onCategoryCreate()
+                isPair && setIsChose(true)
+              }}
+            />
+            <SubIcon onClick={() => dispatch(changeIsEditingCategory({ categoryId, editing: true }))}>
+              <Icon icon="ic:baseline-mode-edit" style={{ color: 'white' }} />
+            </SubIcon>
+            <StyledIcon
+              icon="ic:baseline-cancel"
+              onClick={() => {
+                dispatch(delSubCategories(categoryId))
+                dispatch(delCategory(categoryId))
+              }}
+              style={{ color: 'red' }}
+            />
+          </BlockWrapper>
+        ) : (
+          <Creator oldName={name} categoryId={categoryId} editing={editing} />
+        )}
+        {(isSubCreating || !!subCategory.length) && <VerticalLine />}
+        {!isPair ? (
+          <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} isPair={isPair} />
+        ) : (
+          <PairList />
+        )}
+      </ListItemWrapper>
+      {isPair && isChose && <ChoseBlock offChose={offChose} />}
+    </span>
   )
 }

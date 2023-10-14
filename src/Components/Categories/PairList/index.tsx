@@ -1,10 +1,12 @@
 import { useTypedSelector } from 'hooks/hooks'
 import { RootState } from 'store/store'
+import { CategoryBlock } from '../CategoryBlock'
 import { Creator } from '../Creator'
-import { HorizontalLine, LinePatch, ListItemWrapper, StyledList, VerticalLine } from '../styles'
+import { HorizontalLine, LinePatch, ListItemWrapper, StyledList, StyledPairList, VerticalLine } from '../styles'
 import { SubCategoryBlock } from '../SubCategoryBlock'
+import { useState } from 'react'
 
-export const SubCategoriesList = ({
+export const PairList = ({
   categoryId,
   createSub,
   onSubCreatingClick,
@@ -15,10 +17,11 @@ export const SubCategoriesList = ({
   isPair?: boolean,
   onSubCreatingClick?: () => void,
 }) => {
+  const [pairItemCreate, setPairItemCreate] = useState(true)
   const subCategory = useTypedSelector((state: RootState) => state.subCategories.subCategories).filter((el) => el.categoryId === categoryId)
 
   return (
-    <StyledList>
+    <StyledPairList>
       {subCategory.length >= 1 && <HorizontalLine style={{ position: 'absolute' }} />}
       {!!subCategory?.length &&
         subCategory.map((el, index) => (
@@ -32,7 +35,7 @@ export const SubCategoriesList = ({
             lastPosition={index === subCategory.length - 1 && !createSub ? true : false}
           />
         ))}
-      {createSub && (
+      {pairItemCreate && (
         <ListItemWrapper>
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
@@ -46,6 +49,6 @@ export const SubCategoriesList = ({
           />
         </ListItemWrapper>
       )}
-    </StyledList>
+    </StyledPairList>
   )
 }

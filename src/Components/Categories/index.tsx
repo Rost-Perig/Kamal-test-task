@@ -33,9 +33,9 @@ export const Categories = () => {
         <Icon icon="ic:baseline-near-me" style={{ width: 16, height: 16, color: 'white' }} />
       </StyledBtnDefault>
       <CategoriesWrapper
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
         style={{
           position: 'relative',
           left: offset.x,
