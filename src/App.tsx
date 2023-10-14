@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
 import { Layout } from 'Components/Layout'
-import { Home } from 'views/Home'
+import { Categories } from 'Components/Categories'
 
 function App() {
   return (
     <div className="App">
       <Layout>
-        <Home />
+        <Categories />
       </Layout>
     </div>
   )

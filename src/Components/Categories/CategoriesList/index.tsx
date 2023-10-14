@@ -2,7 +2,7 @@ import { useTypedSelector } from 'hooks/hooks'
 import { RootState } from 'store/store'
 import { CategoryBlock } from '../CategoryBlock'
 import { Creator } from '../Creator'
-import { LinePatch, ListItemWrapper, StyledList, VerticalLine } from '../styles'
+import { HorizontalLine, LinePatch, ListItemWrapper, StyledList, VerticalLine } from '../styles'
 
 export const CategoriesList = () => {
   const isCategoryCreating = useTypedSelector((state: RootState) => state.categories?.isCategoryCreating)
@@ -10,6 +10,7 @@ export const CategoriesList = () => {
 
   return (
     <StyledList>
+      <HorizontalLine style={{ position: 'absolute' }} />
       {!!categories.length &&
         categories.map((el, index) => (
           <CategoryBlock
@@ -23,7 +24,7 @@ export const CategoriesList = () => {
           />
         ))}
       {!!isCategoryCreating && (
-        <ListItemWrapper className="not-draggable" style={{ overflow: 'hidden' }}>
+        <ListItemWrapper style={{ overflow: 'hidden' }}>
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
           </VerticalLine>

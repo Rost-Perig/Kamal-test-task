@@ -1,8 +1,7 @@
 import { useTypedDispatch, useTypedSelector } from 'hooks/hooks'
 import { Icon } from '@iconify/react'
-import { changeX, changeY } from 'store/reducers/position/positionSlice'
 import { RootState } from 'store/store'
-import { changeScale } from 'store/reducers/scale/scaleSlice'
+import { changeScale } from 'store/reducers/scale/positionSlice'
 import { StyledLogo, StyledHeader, ServicesCount, StyledHeaderButton, StyledSelect } from './styles'
 
 const options = [
@@ -82,21 +81,15 @@ export const Header = () => {
       <div style={{ display: 'flex' }}>
         <StyledHeaderButton
           style={{
-            marginRight: 2,
+            marginRight: 6,
             background: 'rgb(108, 116, 216)',
             color: 'white',
           }}
         >
           LIST VIEW
         </StyledHeaderButton>
-        <StyledHeaderButton
-          style={{ marginRight: 6, width: 32, padding: 0 }}
-          onClick={() => {
-            dispatch(changeX({ x: 0 }))
-            dispatch(changeY({ y: 100 }))
-          }}
-        >
-          <Icon icon="ic:baseline-near-me" style={{ width: 16, height: 16 }} />
+        <StyledHeaderButton style={{ marginRight: 6, width: 32, padding: 0 }} onClick={() => dispatch(changeScale({ scale: 1 }))}>
+          <Icon icon="ic:baseline-close-fullscreen" style={{ width: 16, height: 16 }} />
         </StyledHeaderButton>
         <StyledHeaderButton style={{ marginRight: 2 }} onClick={() => dispatch(changeScale({ scale: scale > 0.1 ? scale - 0.1 : 0.1 }))}>
           -
