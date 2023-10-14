@@ -2,7 +2,7 @@ import { useTypedSelector } from 'hooks/hooks'
 import { RootState } from 'store/store'
 import { Creator } from '../Creator'
 import { HorizontalLine, LinePatch, ListItemWrapper, StyledList, VerticalLine } from '../styles'
-import { SubCategoryBlock } from '../SubCategoryBlock '
+import { SubCategoryBlock } from '../SubCategoryBlock'
 
 export const SubCategoriesList = ({
   categoryId,
