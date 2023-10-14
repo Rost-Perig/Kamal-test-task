@@ -10,7 +10,7 @@ export const CategoriesList = () => {
 
   return (
     <StyledList>
-      <HorizontalLine style={{ position: 'absolute' }} />
+      {categories.length >= 1 && <HorizontalLine style={{ position: 'absolute' }} />}
       {!!categories.length &&
         categories.map((el, index) => (
           <CategoryBlock
