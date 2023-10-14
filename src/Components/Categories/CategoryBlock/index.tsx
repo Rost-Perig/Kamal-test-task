@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react'
 import { useTypedDispatch, useTypedSelector } from 'hooks/hooks'
 import { changeIsEditingCategory, delCategory } from 'store/reducers/categories/categoriesSlice'
 import { Creator } from '../Creator'
-import { BlockWrapper, HorizontalLine, LinePatch, ListItemWrapper, StyledCategoryDiv, StyledIcon, SubIcon, VerticalLine } from '../styles'
+import { BlockWrapper, LinePatch, ListItemWrapper, StyledCategoryDiv, StyledIcon, SubIcon, VerticalLine } from '../styles'
 import { SubCategoriesList } from '../SubCategoriesList'
 import { useState } from 'react'
 import { RootState } from 'store/store'
@@ -56,7 +56,6 @@ export const CategoryBlock = ({
         <Creator oldName={name} categoryId={categoryId} editing={editing} />
       )}
       {(isSubCreating || !!subCategory.length) && <VerticalLine />}
-      {(subCategory.length > 1 || (!!subCategory.length && subCategory)) && <HorizontalLine />}
 
       <SubCategoriesList categoryId={categoryId} createSub={isSubCreating} onSubCreatingClick={onSubCreatingClick} isPair={isPair} />
     </ListItemWrapper>

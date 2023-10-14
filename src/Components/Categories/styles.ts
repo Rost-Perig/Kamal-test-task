@@ -18,9 +18,8 @@ export const CategoriesWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* min-width: 600px; */
-  padding: 48px 0px;
-  margin: 0 24px;
+  padding: 48px 24px;
+  /* margin: 0 24px; */
   overflow: hidden;
 `
 

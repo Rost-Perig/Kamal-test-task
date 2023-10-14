@@ -65,16 +65,10 @@ export const Creator = ({ inputName, placeholder, categoryCreating, oldName, edi
                         if (subCategoryCreating && categoryId && name) {
                             dispatch(addSubCategory({ subCategoryName: name, subCategoryId: uuidv4(), categoryId: categoryId, isSubEditing: false}))
                         }
-                    // categoryCreating && name && dispatch(addCategory({ categoryName: name, categoryId: uuidv4(), isEditing: false}))
-                    // categoryCreating && dispatch(changeIsCategoryCreating(false))
-                    // editing && categoryId && name &&  dispatch(editCategoryName({ categoryId: categoryId, newName: name }))
-                    // editing && categoryId && dispatch(changeIsEditingCategory({ categoryId: categoryId, editing: false }))
-
-                    // subCategoryCreating && categoryId && name && dispatch(addSubCategory({ subCategoryName: name, subCategoryId: uuidv4(), categoryId: categoryId, isSubEditing: false}))
-                    isSubEditing && subCategoryId && dispatch(editSubCategoryName({ subCategoryId: subCategoryId, newName: name }))
-                    isSubEditing && subCategoryId && dispatch(changeIsEditingSubCategory({ subCategoryId: subCategoryId, editing: false }))
-                    onSubCreatingClick && onSubCreatingClick()
-                    setName('')
+                        isSubEditing && subCategoryId && dispatch(editSubCategoryName({ subCategoryId: subCategoryId, newName: name }))
+                        isSubEditing && subCategoryId && dispatch(changeIsEditingSubCategory({ subCategoryId: subCategoryId, editing: false }))
+                        onSubCreatingClick && onSubCreatingClick()
+                        setName('')
                 }}
             /> 
             </BlockWrapper>  

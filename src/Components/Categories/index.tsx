@@ -4,18 +4,7 @@ import { RootState } from 'store/store'
 import { changeIsCategoryCreating } from 'store/reducers/categories/categoriesSlice'
 import { CategoriesList } from './CategoriesList'
 import { usePosition } from 'hooks/usePosition'
-import {
-  BlockWrapper,
-  CategoriesWrapper,
-  FrameWrapper,
-  HorizontalLine,
-  StyledBtnDefault,
-  StyledBtnX,
-  StyledBtnY,
-  StyledCategories,
-  StyledIcon,
-  VerticalLine,
-} from './styles'
+import { BlockWrapper, CategoriesWrapper, FrameWrapper, StyledBtnDefault, StyledBtnX, StyledBtnY, StyledCategories, StyledIcon, VerticalLine } from './styles'
 import { useEffect } from 'react'
 
 export const Categories = () => {
@@ -101,7 +90,6 @@ export const Categories = () => {
           <StyledIcon icon="ic:baseline-add-circle" onClick={() => dispatch(changeIsCategoryCreating(true))} />
         </BlockWrapper>
         {(isCategoryCreating || !!categories.length) && <VerticalLine />}
-        {/* {(categories.length > 1 || (!!categories.length && isCategoryCreating)) && <HorizontalLine />} */}
         <CategoriesList />
       </CategoriesWrapper>
     </FrameWrapper>
