@@ -1,6 +1,16 @@
 import styled from 'styled-components'
 import { Icon } from '@iconify/react'
 
+export const FrameWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vw - 82px);
+  overflow: hidden;
+`
+
 export const CategoriesWrapper = styled.div`
   position: relative;
   top: 0;
@@ -62,7 +72,7 @@ export const StyledList = styled.ul`
   justify-content: space-between;
   flex-wrap: nowrap;
   gap: 0 24px;
-  width: 100%;
+  /* width: 100%; */
   margin: 0;
   padding: 0;
 `
@@ -93,7 +103,6 @@ export const VerticalLine = styled.div`
 
 export const HorizontalLine = styled.div`
   position: relative;
-  /* top: 1; */
   width: 100%;
   border-top: 1px solid rgb(199, 208, 216);
 `
@@ -105,5 +114,37 @@ export const LinePatch = styled.div`
   height: 6px;
   background: rgb(245, 247, 251);
   /* background: red; */
+  z-index: 10;
+`
+
+export const StyledBtnY = styled.button`
+  position: absolute;
+  left: calc(50% - 60px);
+  width: 120px;
+  height: 32px;
+  background: rgba(198, 208, 216, 0.6);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+`
+
+export const StyledBtnX = styled.button`
+  position: absolute;
+  top: calc(50% - 60px);
+  width: 32px;
+  height: 120px;
+  background: rgba(198, 208, 216, 0.6);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+`
+
+export const StyledBtnDefault = styled.button`
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: rgba(198, 208, 216, 0.6);
+  border: none;
+  cursor: pointer;
   z-index: 10;
 `

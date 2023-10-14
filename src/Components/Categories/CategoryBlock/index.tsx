@@ -37,7 +37,7 @@ export const CategoryBlock = ({
       {lastPosition && <LinePatch style={{ left: 'calc(50% + 1px)' }} />}
       <VerticalLine />
       {!editing ? (
-        <BlockWrapper className="not-draggable">
+        <BlockWrapper>
           <StyledCategoryDiv style={{ background: 'rgb(250, 156, 124)' }}>{name}</StyledCategoryDiv>
           <StyledIcon icon="ic:baseline-add-circle" onClick={() => setIsSubCreating(true)} />
           <SubIcon onClick={() => dispatch(changeIsEditingCategory({ categoryId, editing: true }))}>
