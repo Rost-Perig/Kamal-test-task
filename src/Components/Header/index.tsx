@@ -94,10 +94,14 @@ export const Header = () => {
         <StyledHeaderButton style={{ marginRight: 2 }} onClick={() => dispatch(changeScale({ scale: scale > 0.1 ? scale - 0.1 : 0.1 }))}>
           -
         </StyledHeaderButton>
-        <StyledSelect name="scales" onChange={(e) => dispatch(changeScale({ scale: Number.parseFloat(e.target.value) }))}>
+        <StyledSelect
+          name="scales"
+          value={scale === 1 || scale === 2 ? scale : scale.toFixed(1)}
+          onChange={(e) => dispatch(changeScale({ scale: Number.parseFloat(e.target.value) }))}
+        >
           {options.map((el) => el)}
         </StyledSelect>
-        <StyledHeaderButton onClick={() => dispatch(changeScale({ scale: scale < 4 ? scale + 0.1 : 4 }))}>+</StyledHeaderButton>
+        <StyledHeaderButton onClick={() => dispatch(changeScale({ scale: scale < 2 ? scale + 0.1 : 2 }))}>+</StyledHeaderButton>
       </div>
     </StyledHeader>
   )
