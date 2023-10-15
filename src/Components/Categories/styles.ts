@@ -27,6 +27,7 @@ export const BlockWrapper = styled.div`
   align-items: center;
   padding: 8px;
   border: 1px solid rgb(199, 208, 216);
+  cursor: default;
 `
 
 export const StyledCategories = styled.div`
