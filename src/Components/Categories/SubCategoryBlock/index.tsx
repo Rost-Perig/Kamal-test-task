@@ -46,6 +46,7 @@ export const SubCategoryBlock = ({
         <BlockWrapper>
           <StyledCategoryDiv style={{ background: !isService ? 'rgb(51, 192, 211)' : 'rgb(116, 163, 152)' }}>{name}</StyledCategoryDiv>
           <StyledIcon icon="ic:baseline-add-circle" onClick={() => setIsChose(true)} />
+
           <SubIcon onClick={() => dispatch(changeIsEditingSubCategory({ subCategoryId, editing: true }))}>
             <Icon icon="ic:baseline-mode-edit" style={{ color: 'white' }} />
           </SubIcon>
@@ -54,6 +55,7 @@ export const SubCategoryBlock = ({
       ) : (
         <Creator oldName={name} subCategoryId={subCategoryId} isSubEditing={isSubEditing} />
       )}
+
       {isChose && isPair && (
         <span style={{ position: 'relative', top: -72, left: 66, width: 300, height: lastPosition ? 200 : 36 }}>
           <ChoseBlock offChose={offChose} onPairItemCreate={onPairItemCreate} onServiceCreate={onServiceCreate} />

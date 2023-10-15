@@ -1,6 +1,5 @@
 import { StyledIcon } from '../styles'
 import { ChosenBlockWrapper, StyledBtn } from './styles'
-import { useTypedDispatch } from 'hooks/hooks'
 
 export const ChoseBlock = ({
   offChose,
@@ -11,7 +10,6 @@ export const ChoseBlock = ({
   onPairItemCreate: (value: boolean) => void,
   onServiceCreate: (value: boolean) => void,
 }) => {
-  const dispatch = useTypedDispatch()
   return (
     <ChosenBlockWrapper>
       <span> What do You want to create?</span>
