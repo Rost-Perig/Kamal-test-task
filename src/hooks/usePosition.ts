@@ -1,19 +1,28 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, MouseEvent } from 'react'
 
 export const usePosition = () => {
   const [isDragging, setIsDragging] = useState(false)
   const [offset, setOffset] = useState({ x: 0, y: 100 })
   const initialPos = useRef({ x: 0, y: 0 })
 
-  const handleMouseDown = (e: any) => {
-    if (e.button === 0) {
+  const handleMouseDown = (e: MouseEvent) => {
+    let element = e.target as Element | null
+    let shouldStartDragging = true
+    while (element) {
+      if (element.classList.contains('not-draggable')) {
+        shouldStartDragging = false
+        break
+      }
+      element = element.parentElement
+    }
+    if (e.button === 0 && shouldStartDragging) {
       setIsDragging(true)
       initialPos.current.x = e.clientX
       initialPos.current.y = e.clientY
     }
   }
 
-  const handleMouseMove = (e: any) => {
+  const handleMouseMove = (e: MouseEvent) => {
     if (isDragging) {
       const dx = e.clientX - initialPos.current.x
       const dy = e.clientY - initialPos.current.y

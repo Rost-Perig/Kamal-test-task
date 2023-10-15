@@ -18,8 +18,7 @@ export const CategoriesWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 48px 24px;
-  /* margin: 0 24px; */
+  padding: 48px 112px 120px 112px;
   overflow: hidden;
 `
 
@@ -27,7 +26,6 @@ export const BlockWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 8px;
-  /* margin: 0 4px; */
   border: 1px solid rgb(199, 208, 216);
 `
 
@@ -76,6 +74,18 @@ export const StyledList = styled.ul`
   padding: 0;
 `
 
+export const StyledPairList = styled.ul`
+  position: relative;
+  /* top: -1px; */
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  /* gap: 0 24px; */
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
+`
+
 export const StyledCategoryDiv = styled.div`
   max-width: 160px;
   max-height: 36px;
@@ -92,6 +102,7 @@ export const ListItemWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  cursor: default;
 `
 
 export const VerticalLine = styled.div`

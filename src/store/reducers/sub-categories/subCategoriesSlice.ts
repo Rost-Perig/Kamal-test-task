@@ -7,16 +7,17 @@ interface ISubCategoriesState {
     subCategoryName: string,
     categoryId: string,
     subCategoryId: string,
+    isService: boolean,
+    isPair: boolean,
   }[];
 }
 
 const initialState: ISubCategoriesState = {
   subCategories: [],
-  // subCategories: []
 }
 
 export const subCategoriesSlice = createSlice({
-  name: 'categories',
+  name: 'subCategories',
   initialState,
   reducers: {
     addSubCategory: (
@@ -26,6 +27,8 @@ export const subCategoriesSlice = createSlice({
         subCategoryId: string,
         categoryId: string,
         isSubEditing: boolean,
+        isPair: boolean,
+        isService: boolean,
       }>
     ) => {
       state.subCategories.push(action.payload)

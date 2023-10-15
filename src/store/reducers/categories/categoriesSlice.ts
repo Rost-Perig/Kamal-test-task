@@ -10,14 +10,6 @@ interface ICategoriesState {
   }[]
 }
 
-// interface ICategory {
-//     id: string;
-//     name: string;
-//     isEditing: boolean;
-//     parentId: ICategory;
-//     childrenIds: Array<ICategory>;
-// }
-
 const initialState: ICategoriesState = {
   isCategoryCreating: false,
   categories: []

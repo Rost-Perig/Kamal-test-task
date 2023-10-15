@@ -24,7 +24,7 @@ export const CategoriesList = () => {
           />
         ))}
       {!!isCategoryCreating && (
-        <ListItemWrapper style={{ overflow: 'hidden' }}>
+        <ListItemWrapper style={{ overflow: 'hidden' }} className="not-draggable">
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
           </VerticalLine>

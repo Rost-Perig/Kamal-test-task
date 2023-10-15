@@ -33,7 +33,7 @@ export const SubCategoriesList = ({
           />
         ))}
       {createSub && (
-        <ListItemWrapper>
+        <ListItemWrapper className="not-draggable">
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
           </VerticalLine>
