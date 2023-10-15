@@ -46,7 +46,7 @@ export const CategoryBlock = ({
 
   return (
     <span style={{ position: 'relative' }}>
-      <ListItemWrapper>
+      <ListItemWrapper className="not-draggable">
         {firstPosition && <LinePatch style={{ right: 'calc(50% + 1px)' }} />}
         {lastPosition && <LinePatch style={{ left: 'calc(50% + 1px)' }} />}
         <VerticalLine />
@@ -84,7 +84,7 @@ export const CategoryBlock = ({
         )}
       </ListItemWrapper>
       {(pairItemCreate || serviceCreate) && isPair && (
-        <ListItemWrapper>
+        <ListItemWrapper className="not-draggable">
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
           </VerticalLine>

@@ -102,6 +102,7 @@ export const ListItemWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  cursor: default;
 `
 
 export const VerticalLine = styled.div`

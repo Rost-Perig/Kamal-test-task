@@ -38,7 +38,7 @@ export const SubCategoryBlock = ({
   const onServiceCreate = (value: boolean) => setServiceCreate(value)
 
   return (
-    <ListItemWrapper style={{ overflow: 'visible' }}>
+    <ListItemWrapper style={{ overflow: 'visible' }} className="not-draggable">
       {firstPosition && <LinePatch style={{ right: 'calc(50% + 1px)' }} />}
       {lastPosition && !isPair && <LinePatch style={{ left: 'calc(50% + 1px)' }} />}
       <VerticalLine />
@@ -60,7 +60,7 @@ export const SubCategoryBlock = ({
         </span>
       )}
       {(pairItemCreate || serviceCreate) && isPair && (
-        <ListItemWrapper>
+        <ListItemWrapper className="not-draggable">
           <VerticalLine style={{ position: 'relative' }}>
             <LinePatch />
           </VerticalLine>
